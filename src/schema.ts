@@ -20,6 +20,7 @@ export const schema = makeSchema({
     backingTypeMap: {
       Date: 'Date',
       URL: 'URL'
-    }
+    },
+    debug: process.env.NODE_ENV === 'development'
   }
 });
