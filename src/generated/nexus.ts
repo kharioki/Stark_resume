@@ -76,11 +76,17 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     bio: NexusGenRootTypes['Bio']; // Bio!
+    position: NexusGenRootTypes['Position'] | null; // Position
     positions: NexusGenRootTypes['Position'][]; // [Position!]!
   }
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    position: { // args
+      id?: string | null; // ID
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {

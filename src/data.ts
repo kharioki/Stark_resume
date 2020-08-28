@@ -11,7 +11,7 @@ export const data = {
   skills: ['Javascript', 'Wood-working', 'Fashion accessorizing'],
   positions: [
     {
-      id: 1,
+      id: '1',
       title: 'Engineering Lead',
       company: 'Cango Africa',
       startDate: '2019-03-01',
@@ -25,7 +25,7 @@ export const data = {
       ]
     },
     {
-      id: 2,
+      id: '2',
       title: 'Mobile developer',
       company: 'Mookh Africa',
       startDate: '2018-06-01',
@@ -39,7 +39,7 @@ export const data = {
       ]
     },
     {
-      id: 3,
+      id: '3',
       title: 'Web developer',
       company: 'Sinbad Technologies',
       startDate: '2018-01-01',
@@ -53,7 +53,7 @@ export const data = {
       ]
     },
     {
-      id: 4,
+      id: '4',
       title: 'Entrepreneur in Training',
       company: 'MEST Africa',
       startDate: '2016-08-15',
