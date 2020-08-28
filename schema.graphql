@@ -21,10 +21,14 @@ type Position {
   achievements: [String!]!
   company: String!
   employmentType: String!
+
+  """When I stopped working at this position."""
   endDate: Date
   id: ID!
   location: String!
   months: Int!
+
+  """When I started at this position."""
   startDate: Date!
   title: String!
   years: Int!

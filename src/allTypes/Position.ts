@@ -7,9 +7,13 @@ export const Position = objectType({
     t.id('id');
     t.string('title');
     t.string('company');
-    t.date('startDate', position => new Date(position.startDate));
+    t.date('startDate', {
+      description: 'When I started at this position.',
+      resolve: position => new Date(position.startDate)
+    });
     t.date('endDate', {
       nullable: true,
+      description: 'When I stopped working at this position.',
       resolve: position =>
         position.endDate ? new Date(position.endDate) : null
     });
