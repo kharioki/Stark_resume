@@ -1,4 +1,5 @@
 import { objectType } from '@nexus/schema';
+import { differenceInYears, differenceInMonths } from 'date-fns';
 
 export const Position = objectType({
   name: 'Position',
@@ -14,5 +15,23 @@ export const Position = objectType({
     });
     t.string('employmentType');
     t.string('location');
+    // years
+    t.int('years', ({ endDate, startDate }) =>
+      differenceInYears(
+        endDate ? new Date(endDate) : new Date(),
+        new Date(startDate)
+      )
+    );
+    // months
+    t.int(
+      'months',
+      ({ endDate, startDate }) =>
+        differenceInMonths(
+          endDate ? new Date(endDate) : new Date(),
+          new Date(startDate)
+        ) % 12
+    );
+    //achievements
+    t.list.string('achievements', position => position.achievements);
   }
 });

@@ -66,13 +66,16 @@ export interface NexusGenFieldTypes {
     website: NexusGenScalars['URL']; // URL!
   }
   Position: { // field return type
+    achievements: string[]; // [String!]!
     company: string; // String!
     employmentType: string; // String!
     endDate: NexusGenScalars['Date'] | null; // Date
     id: string; // ID!
     location: string; // String!
+    months: number; // Int!
     startDate: NexusGenScalars['Date']; // Date!
     title: string; // String!
+    years: number; // Int!
   }
   Query: { // field return type
     bio: NexusGenRootTypes['Bio']; // Bio!
