@@ -5,7 +5,7 @@ export const data = {
     email: 'tony.kharioki@gmail.com',
     github: 'https://github.com/kharioki',
     website: 'https://kharioki.github.io/My-Portfolio/',
-    linkedin: 'https://www.linkedin.com/in/kharioki/',
+    linkedin: 'https://linkedin.com/in/kharioki/',
     objective: 'To build cool tech products.'
   },
   skills: ['Javascript', 'Wood-working', 'Fashion accessorizing'],

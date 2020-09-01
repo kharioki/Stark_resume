@@ -1,5 +1,9 @@
 import Head from 'next/head';
 import { useQuery, gql } from '@apollo/client';
+import { format } from 'date-fns';
+import { print } from 'graphql/language/printer';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import prismStyle from 'react-syntax-highlighter/dist/esm/styles/prism/xonokai';
 import styles from '../styles/Home.module.css';
 
 const ResumeQuery = gql`
@@ -75,10 +79,46 @@ export default function Home() {
             <strong>Linkedin:</strong>{' '}
             <a href={bio.linkedin}>{bio.linkedin.replace('https://', '')}</a>
           </p>
+
+          <SyntaxHighlighter language="graphql" style={prismStyle}>
+            {print(ResumeQuery)}
+          </SyntaxHighlighter>
         </div>
-        <div className={styles.right}>right</div>
+        <div className={styles.right}>
+          <h2>Objective</h2>
+          <p>{bio.objective}</p>
+
+          <h2>Experience</h2>
+          {positions.map(position => {
+            const length = [
+              position.years > 0 ? `${position.years} yrs` : null,
+              position.months > 0 ? `${position.months} mnths` : null
+            ]
+              .filter(str => str)
+              .join(' ');
+            return (
+              <div key={position.id}>
+                <h3>{position.title}</h3>
+                <p className={styles.light}>
+                  {position.company} | {position.location}
+                </p>
+                <p className={styles.light}>
+                  {format(new Date(position.startDate), 'MMM yyyy')} -{' '}
+                  {position.endDate
+                    ? format(new Date(position.endDate), 'MMM yyyy')
+                    : 'Current'}{' '}
+                  ({length})
+                </p>
+                <ul>
+                  {position.achievements.map(achievement => (
+                    <li key={achievement}>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
 }
