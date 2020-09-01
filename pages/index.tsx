@@ -43,12 +43,41 @@ export default function Home() {
       </header>
     );
   }
+
+  const { bio, positions } = data;
   return (
     <>
       <Head>
         <title>Stark's Resume</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header className={styles.header}>
+        <h1>{bio.name}</h1>
+        <h2>{bio.tagline}</h2>
+      </header>
+
+      <div className={styles.split}>
+        <div className={styles.left}>
+          <h2>Contact</h2>
+          <p>
+            <strong>Email:</strong>{' '}
+            <a href={`mailto:${bio.email}`}>{bio.email}</a>
+          </p>
+          <p>
+            <strong>Website:</strong>{' '}
+            <a href={bio.website}>{new URL(bio.website).host}</a>
+          </p>
+          <p>
+            <strong>Github:</strong>{' '}
+            <a href={bio.github}>{bio.github.replace('https://', '')}</a>
+          </p>
+          <p>
+            <strong>Linkedin:</strong>{' '}
+            <a href={bio.linkedin}>{bio.linkedin.replace('https://', '')}</a>
+          </p>
+        </div>
+        <div className={styles.right}>right</div>
+      </div>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
